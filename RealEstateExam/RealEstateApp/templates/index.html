@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script href="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+</head>
+<body class="border-top border-5 border-dark">
+
+<div class="container-fluid">
+    <div class="container px-0 d-flex justify-content-between align-items-center">
+        <img src="{% static 'images/logo.png' %}" alt="">
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a class=" btn btn-dark" href="#">Contact Us</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="container px-0 d-flex">
+        <div class="w-50 d-flex flex-column justify-content-center ps-5">
+            <div class="display-1 fw-bold text-dark-emphasis">Architecture</div>
+            <div class="display-2 fw-bold text-secondary">Bureau</div>
+        </div>
+        <div class="w-50 d-flex justify-content-end">
+            <img src="{% static 'images/house3.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="container px-0 d-flex">
+
+        <div class="w-50 d-flex justify-content-start">
+            <img src="{% static 'images/house4.jpg' %}" alt="">
+        </div>
+
+        <div class="w-50 d-flex justify-content-start align-items-center ps-5">
+            <h5 class="w-50 fw-bold text-secondary ps-5 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+                accusamus alias assumenda commodi, deserunt dolore dolorem doloribus dolorum enim eos esse fuga illo
+                impedit in ipsa ipsum itaque iure libero molestias nemo officia possimus quae quas quidem reiciendis,
+                rem repellat sapiente sit soluta suscipit tempora tempore temporibus totam velit voluptatum.</h5>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid my-5">
+    <div class="container px-0">
+        <div class="row mb-5">
+            <div class="display-3 text-dark text-center">
+                We offer variety of projects
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col border-bottom border-5 border-dark">
+                <h5 class="pb-3 text-center fw-bold">All houses</h5>
+            </div>
+            <div class="col border-bottom border-5 border-secondary-subtle">
+                <h5 class="pb-3 text-center fw-bold">Stone houses</h5>
+            </div>
+            <div class="col border-bottom border-5 border-secondary-subtle">
+                <h5 class="pb-3 text-center fw-bold">Frame houses</h5>
+            </div>
+        </div>
+
+        <div class="row row-cols-3 ">
+            {% for property in properties %}
+                <div class="col mb-3">
+                    <div class="card " style="background-color: whitesmoke">
+                        <img src="{{ property.image.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{ property.name }}</h5>
+                            <div class="d-flex justify-content-between">
+                                <p class="fw-bold">Area</p>
+                                <p class="fw-bold">{{ property.area }} sqm</p>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <p class="fw-bold">Price</p>
+                                <p class="fw-bold">{{ property.get_full_price }} $</p>
+                            </div>
+                            <a href="{% url 'edit_property' property.id %}" class="btn btn-lg btn-dark">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

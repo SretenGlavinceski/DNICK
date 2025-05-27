@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script href="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+</head>
+<body class="border-top border-5 border-dark">
+
+<div class="container-fluid">
+    <div class="container px-0 d-flex justify-content-between align-items-center">
+        <img src="{% static 'images/logo.png' %}" alt="">
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-dark-emphasis" href="#">Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a class=" btn btn-dark" href="#">Contact Us</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+<div class="container-fluid mt-3 mb-5">
+    <div class="container px-0">
+
+        <div class="d-flex mb-3">
+            <div class="w-50 d-flex align-items-center"><h1>EDIT: {{ form.instance.name }}</h1></div>
+            <div class="w-50 d-flex justify-content-end">
+                <img src="{{ form.instance.image.url }}" alt="">
+            </div>
+        </div>
+
+        <form action="" method="post" enctype="multipart/form-data" class="d-flex flex-column">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="mb-3">
+                <label for="chars" class="form-label">Characteristics</label>
+                <input type="text" name="chars" id="chars" class="form-control"
+                       value="{{ form.instance.get_all_characteristics }}">
+            </div>
+
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
