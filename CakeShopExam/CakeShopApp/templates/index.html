@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cake Shop</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script href="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container px-0 d-flex justify-content-between align-items-center">
+        <h1 class="text-danger">Cakery&Bakery</h1>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{% url 'add_cake' %}">Add</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis">Pricing</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid bg-danger py-5">
+    <div class="container px-0 d-flex">
+        <div class="w-50 d-flex flex-column justify-content-center">
+            <div class="display-3 text-white mb-3">Explore the wonderland of tastes!</div>
+            <h5 class="text-dark-emphasis mb-5">Assignment for HCI Exam in January 2025</h5>
+            <div class="d-flex">
+                <button class="btn btn-light me-3">Get Started</button>
+                <button class="btn border border-1 border-light text-white">Learn More</button>
+            </div>
+        </div>
+        <div class="w-50 d-flex justify-content-end">
+            <img src="{% static 'section_img_1.png' %}" width="600px" alt="" class="">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-secondary-subtle py-5">
+    <div class="container d-flex justify-content-center">
+        <div class="w-50">
+            <h5 class="text-dark-emphasis text-center fw-bold mb-4">"Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ad, blanditiis cupiditate deleniti excepturi fugit incidunt inventore ipsam, laborum magnam magni modi
+                molestias nihil perferendis, praesentium provident quis sequi vel veritatis."</h5>
+
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="{% static 'avatar_img_1.png' %}" alt="" class="me-3">
+                <h5 class="text-dark-emphasis text-center fw-bold p-0">John Doe / CEO, Cakery&Bakery</h5>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container px-0 py-5">
+        <div class="row mb-4">
+            <h1 class="fw-bold text-danger mb-3 text-center">Products</h1>
+            <h5 class="text-dark-emphasis text-center">Add more products in the edit form!</h5>
+        </div>
+
+        <div class="row row-cols-3">
+            {% for cake in cakes %}
+
+                <div class="col mb-4">
+                    <div class="card shadow">
+                      <img src="{{ cake.image.url }}" class="card-img-top " alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ cake.name }}</h5>
+                        <p class="card-text">{{ cake.description }}</p>
+                        <div class="d-flex align-items-center ">
+                            <img src="{{ cake.baker.image.url }}" class="rounded-circle p-0 me-3" alt="">
+                            <h5 class="p-0">{{ cake.baker.name }} {{ cake.baker.surname }}</h5>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid bg-danger py-3">
+    <div class="container px-0 d-flex justify-content-between align-items-center">
+        <h3 class="text-light">Copyright <span>&copy;</span> HCI 2025</h3>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis">Privacy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="#">Terms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{% url 'add_cake' %}">Add</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

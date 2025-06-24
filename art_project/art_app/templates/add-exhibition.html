@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid my-4">
+        <div class="container d-flex justify-content-center bg-success-subtle py-3">
+
+
+            <div class="w-50 border border-1 border-dark-subtle p-3 shadow">
+                {% if form.instance.id %}
+                    <h1 class="text-center">Edit the Exhibition {{ form.instance.title }}</h1>
+                {% else %}
+                    <h1 class="text-center">Add New Exhibition</h1>
+                {% endif %}
+                <form action="{{ pathURL }}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    {% if form.instance.id %}
+                        <label for="list_artworks_text">All Artworks</label>
+                        <input type="text" name="list_artworks_text" class="form-control"
+                               value="{{ form.instance.list_artworks_text }}">
+
+                    {% endif %}
+
+
+                    <button type="submit" class="btn btn-primary mt-3">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,46 @@
+    {% load static %}
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+    
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+        <script href="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    
+    </head>
+    <body>
+    
+    <div class="container-fluid bg-dark">
+        <div class="container d-flex justify-content-between align-items-center px-0 py-3">
+            <h3 class="text-white">Lab4 DNICK</h3>
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'create' %}">Add</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    
+    {% block content %}{% endblock %}
+    
+    <div class="container-fluid bg-dark">
+        <div class="container d-flex justify-content-between align-items-center px-0 py-3">
+            <h5 class="text-white">Copyright <span>&copy;</span></h5>
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'create' %}">Add</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    
+    </body>
+    </html>

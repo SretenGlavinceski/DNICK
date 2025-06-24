@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cake Shop</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script href="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container px-0 d-flex justify-content-between align-items-center">
+        <h1 class="text-danger">Cakery&Bakery</h1>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{% url 'add_cake' %}">Add</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis">Pricing</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid my-3">
+    <div class="container px-0 bg-secondary-subtle d-flex justify-content-center align-items-center py-5">
+        <div class="w-50">
+            <h1 class="fw-bold text-danger mb-5 text-center">Add new cake</h1>
+
+            <form action="" method="POST" enctype="multipart/form-data" class="d-flex flex-column">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-lg btn-danger">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-danger py-3">
+    <div class="container px-0 d-flex justify-content-between align-items-center">
+        <h3 class="text-light">Copyright <span>&copy;</span> HCI 2025</h3>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis">Privacy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="#">Terms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{% url 'add_cake' %}">Add</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

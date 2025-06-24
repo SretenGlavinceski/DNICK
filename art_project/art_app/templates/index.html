@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid py-5">
+        <div class="container py-5 bg-success-subtle">
+
+            <div class="row mb-5">
+                <h1 class="text-dark-emphasis text-center">View All Active Exhibitions</h1>
+            </div>
+
+            <div class="row row-cols-3">
+                {% for exhibition in exhibitions %}
+                    <div class="col mb-3">
+                        <div class="card rounded">
+                            <img src="{{ exhibition.image.url }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3 fw-bold">{{ exhibition.title }}</h5>
+                                <p class="card-text border-bottom border-3 border-dark-subtle">
+                                    Dates: {{ exhibition.date_start }} - {{ exhibition.date_finish }}</p>
+                                <p class="card-text border-bottom border-3 border-dark-subtle">Number of
+                                    artists: {{ exhibition.num_of_artist_at_exhibition }}</p>
+                                <p class="card-text border-bottom border-3 border-dark-subtle">Number of artworks
+                                    presented: {{ exhibition.num_of_artworks_at_exhibition }}</p>
+
+                                <a href="{% url 'edit_exhibition' exhibition.id %}" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

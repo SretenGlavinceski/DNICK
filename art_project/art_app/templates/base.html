@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script href="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid bg-primary-subtle">
+    <div class="container d-flex justify-content-between align-items-center px-0">
+        <h1>Exhibition App</h1>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis active" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="{% url 'add_exhibition' %}">Add</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="#">Contacts</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% block content %}{% endblock %}
+
+<div class="container-fluid bg-primary-subtle ">
+    <div class="container px-0 d-flex justify-content-between align-items-center py-3">
+        <h5>All Rights Reserved <span>&copy;</span></h5>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis active" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="{% url 'add_exhibition' %}">Add</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark-emphasis" href="#">Contacts</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

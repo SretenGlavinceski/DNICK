@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container shadow-lg my-3 border border-1 border-dark-subtle pt-5" style="background-color: #f4f4f4">
+            <h1 class="text-center fw-bold text-dark-emphasis">Details for phone: {{ mobile }}</h1>
+
+            <div class="d-flex w-100">
+
+                <div class="w-50 d-flex justify-content-center align-items-center">
+                    <img src="{{ mobile.image.url }}" alt="" class="w-100">
+                </div>
+
+                <div class="d-flex flex-column align-items-start justify-content-center w-50 ps-5 pe-2">
+                    <h3 class="fw-bold text-dark-emphasis border-bottom border-1 border-dark-subtle mb-4 pb-2"
+                        style="width: 300px">{{ mobile.mobile_model }}</h3>
+                    <p class="border-bottom border-1 border-dark-subtle mb-3 pb-2" style="width: 300px">
+                        Производител: {{ mobile.manufacturer }}</p>
+                    <p class="border-bottom border-1 border-dark-subtle mb-3 pb-2" style="width: 300px">Тип на
+                        Уред: {{ mobile.get_type_mobile_display }}</p>
+                    <p class="border-bottom border-1 border-dark-subtle mb-5 pb-2" style="width: 300px">
+                        Цена: {{ mobile.price }} ден.</p>
+
+                    <button class="btn btn-success mb-3">Додади во кошничка</button>
+
+                    <p >Гаранција од 12 месеци. Вашиот нов {{ mobile.mobile_model }} е заштитен со гаранција која ги
+                        покрива сите фабрички оштетувања.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

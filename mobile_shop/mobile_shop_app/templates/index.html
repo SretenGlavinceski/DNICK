@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container shadow-lg my-3 border border-1 border-dark-subtle" style="background-color: #f4f4f4">
+            <h1 class="fw-bold text-dark-emphasis text-center my-3">Сите мобилни уреди</h1>
+
+            <div class="row row-cols-4">
+                {% for mobile in mobiles %}
+                    <div class="col mb-3">
+                        <div class="card rounded d-flex flex-column align-items-center justify-content-between">
+                            <img src="{{ mobile.image.url }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ mobile.mobile_model }}</h5>
+                                <p class="card-text">Производител: {{ mobile.manufacturer }}</p>
+                                <p class="card-text">Тип на Уред: {{ mobile.get_type_mobile_display }}</p>
+                                <p class="card-text">Цена: {{ mobile.price }} ден.</p>
+                                <a href="{% url 'view_details' mobile.id %}"
+                                   class="btn border border-1 border-dark-subtle">Детали</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
